@@ -30,7 +30,9 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		request.getRequestDispatcher("Form.jsp").forward(request, response);
+		//request.getRequestDispatcher("Todo.java").forward(request, response);
 		
 		
 //		out.println("<html>");
