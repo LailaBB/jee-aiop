@@ -18,9 +18,9 @@
    	 			<td>Name</td>
  	   			<td>Description</td>
  			</tr>
- 			<% while(request.getAttribute("")!=null) %>
+ 			<% if(request.getAttribute("task")!=null) %>
  			<tr>
- 				<td><%= request.getAttribute("") %></td>
+ 				<td><%= request.getAttribute("task") %></td>
  			</tr>
 		</table> 
 	</form>

@@ -50,7 +50,7 @@ public class TodoServlet extends HttpServlet {
 		todos.add(i, task);
 		i++;
 		
-		request.setAttribute("", todos);
+		request.setAttribute("task", todos);
 		request.getRequestDispatcher("Todo.jsp").forward(request, response);
 		
 	}
