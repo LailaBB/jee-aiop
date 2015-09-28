@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.polytech.todo.ToDo;
+import fr.polytech.todo.dao.TodoDAO;
 
 /**
  * Servlet implementation class TodoServlet
@@ -20,8 +22,10 @@ import fr.polytech.todo.ToDo;
 public class TodoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static List<ToDo> todos = new ArrayList<ToDo>() ; 
-	int i = 0;
+	@EJB
+	private TodoDAO dao;
+	
+	static private int i = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,7 +40,7 @@ public class TodoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
+		request.setAttribute("task", dao.all());
 		request.getRequestDispatcher("Todo.jsp").forward(request, response);
 	}
 
@@ -45,13 +49,14 @@ public class TodoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
-		ToDo task = new ToDo(i,request.getParameter("Name"),request.getParameter("Description"));
-		todos.add(i, task);
-		i++;
-		
-		request.setAttribute("task", todos);
-		request.getRequestDispatcher("Todo.jsp").forward(request, response);
+//		ToDo task = new ToDo(i,request.getParameter("Name"),request.getParameter("Description"));
+//		todos.add(i, task);
+//		i++;
+		ToDo todo = new ToDo();
+		todo.setName(request.getParameter("Name"));
+		todo.setDescription(request.getParameter("Description"));
+		dao.create(todo);
+		this.doGet(request, response);
 		
 	}
 

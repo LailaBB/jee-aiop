@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,10 +19,12 @@
    	 			<td>Name</td>
  	   			<td>Description</td>
  			</tr>
- 			<% if(request.getAttribute("task")!=null) %>
- 			<tr>
- 				<td><%= request.getAttribute("task") %></td>
+ 			<c:forEach items="${task}" var="todo">
+			  <tr>
+ 				<td>${todo.name} </td> <td>${todo.description }</td>
  			</tr>
+			</c:forEach>
+ 			
 		</table> 
 	</form>
 </body>
