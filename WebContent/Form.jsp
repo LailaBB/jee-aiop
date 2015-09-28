@@ -10,8 +10,8 @@
 
 	<form  method="POST">
 		First name : <br>
-		<input type = "text" name = "firstname"><br>
-		<input type="submit" value="Submit Please =)">
+		<input type = "text" name = "firstname"><br><br>
+		<input type="submit" value="Submit">
 	</form>
 
 </body>

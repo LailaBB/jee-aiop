@@ -42,7 +42,7 @@ public class ToDo
 	{
 		System.out.println("[" + getId() + "] " + getName() + ":" + getDescription());
 		
-		return "ToDo [getId()=" + getId() + ", getName()=" + getName() + ", getDescription()=" + getDescription() + "]";
+		return "Todo " + getId() + " : " + getName() + " : " + getDescription() ;
 	}
 	
 	public static void main(String[] args)
